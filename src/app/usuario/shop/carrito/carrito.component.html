@@ -1,0 +1,50 @@
+<div *ngIf="totalCantidad > 0">
+  <div class="container" id="contenido">
+    <div class="row">
+      <div class="col-sm-10 col-md-10 col-md-offset-1 col-sm-offset-1">
+        <h1>Carrito</h1>
+        <table class="table">
+          <thead>
+            <tr>
+              <th class="text-center">Id</th>
+              <th class="text-center">Nombre</th>
+              <th class="text-center">Cantidad</th>
+              <th class="text-center">Precio total</th>
+              <!-- <th class="text-center">Modificar cantidad</th> -->
+              <th class="text-center">Remover</th>
+            </tr>
+          </thead>
+          <tr *ngFor="let item of items">
+            <td align="center">{{ item.producto.id }}</td>
+            <td align="center">{{ item.producto.nombre }}</td>
+            <td align="center">{{ item.cantidad }}</td>
+            <td align="center">{{ item.producto.precio * item.cantidad }}</td>
+            <!-- <td align="center">
+            <a class="btn btn-success">Modificar cantidad</a>
+          </td> -->
+            <td align="center">
+              <a class="btn btn-success" (click)="remover(item.producto.id)">Remover</a>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-10 col-md-10 col-md-offset-1 col-sm-offset-1">
+        <strong class="pull-right"> Total: ${{ total }} </strong>
+      </div>
+    </div>
+  </div>
+  <hr>
+  <div class="row">
+    <div class="col-sm-6 col-md-6 col-md-offset-3 col-sm-offset-3">
+      <a [routerLink]="['/usuario/checkout']" type="button" class="btn btn-success pull-right">Checkout</a>
+      <button type="button" (click)="generarFactura()" class="btn btn-success">Generar factura</button>
+    </div>
+  </div>
+</div>
+<div class="row" *ngIf="totalCantidad == 0">
+  <div class="col-sm-6 col-md-6 col-md-offset-3 col-sm-offset-3">
+    <h2>No existen productos en el carrito</h2>
+  </div>
+</div>

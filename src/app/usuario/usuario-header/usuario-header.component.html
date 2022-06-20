@@ -1,0 +1,71 @@
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+      <div class="navbar-header">
+          <button type="button"
+                  class="navbar-toggle collapsed"
+                  data-toggle="collapse"
+                  data-target="#bs-example-navbar-collapse-1"
+                  aria-expanded="false">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand"
+             href="/">Home</a>
+      </div>
+      <div class="collapse navbar-collapse"
+           id="bs-example-navbar-collapse-1">
+          <ul class="nav navbar-nav">
+              <li class="dropdown" dropdown>
+                  <a class="dropdown-toggle" dropdownToggle
+                     data-toggle="dropdown"
+                     role="button"
+                     aria-haspopup="true"
+                     aria-expanded="false"
+                     >Categorias <span class="caret"></span></a>
+                  <ul class="dropdown-menu" *dropdownMenu>
+                      <li>
+                        <a [routerLink]="['/usuario/productos']">Todos</a>
+                      </li>
+                      <li *ngFor="let categoria of categorias">
+                          <a [routerLink]="['/usuario/productos/categoria', categoria.id]">{{categoria.nombre}}</a>
+                      </li>
+                  </ul>
+              </li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+              <li>
+                  <a [routerLink]="['/usuario/carrito']"
+                  routerLinkActive="router-link-active" >
+                      <i class="fa fa-shopping-cart" aria-hidden="true"></i> Carrito
+                      <span class="badge" *ngIf="totalCantidad > 0">{{ totalCantidad }}</span>
+                  </a>
+              </li>
+              <li class="dropdown" dropdown>
+                  <a class="dropdown-toggle" dropdownToggle
+                     data-toggle="dropdown"
+                     role="button" aria-haspopup="true"
+                     aria-expanded="false"><i class="fa fa-user">
+                      </i> Manejador de usuario
+                      <span class="caret"></span>
+                  </a>
+                  <ul class="dropdown-menu" *dropdownMenu>
+                          <li *ngIf="userIsAuthenticated"><a
+                          [routerLink]="['/usuario/perfil', clienteId]"
+                            >Perfil de usuario</a></li>
+                          <li *ngIf="userIsAuthenticated">
+                              <button (click)="onLogout()">Logout</button></li>
+                          <li *ngIf="!userIsAuthenticated"><a
+                            [routerLink]="['/usuario/registrar']"
+                            >Registrar</a></li>
+                          <li *ngIf="!userIsAuthenticated"><a
+                            [routerLink]="['/usuario/inicio-sesion']"
+                            >Iniciar sesion</a></li>
+                  </ul>
+              </li>
+          </ul>
+      </div>
+  </div>
+</nav>
+

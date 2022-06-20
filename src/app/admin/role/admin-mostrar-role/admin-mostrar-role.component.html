@@ -1,0 +1,23 @@
+<h1>Visualizar roles</h1>
+<table class="table">
+  <thead>
+    <tr>
+      <th class="text-center">Id</th>
+      <th  class="text-center">Nombre</th>
+      <th  class="text-center">Editar</th>
+      <th  class="text-center">Eliminar</th>
+    </tr>
+  </thead>
+    <tr *ngFor="let role of roles">
+      <td align="center"> {{ role.id }} </td>
+      <td align="center"> {{ role.nombre }} </td>
+      <td align="center">
+        <a [routerLink]="['/administrador/editar-role', role.id]"
+        routerLinkActive="router-link-active"  class="btn btn-success">Editar
+        </a>
+      </td>
+      <td align="center">
+        <a class="btn btn-success" (click)="onDelete(role.id)">Eliminar</a>
+      </td>
+    </tr>
+</table>

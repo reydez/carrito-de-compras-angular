@@ -1,0 +1,26 @@
+    <h1>Visualizar Clientes</h1>
+    <table class="table">
+        <thead>
+        <tr>
+            <th class="text-center">id</th>
+            <th  class="text-center">Nombre</th>
+            <th  class="text-center">Correo</th>
+            <th  class="text-center">Editar</th>
+            <th  class="text-center">Eliminar</th>
+        </tr>
+        </thead>
+            <tr *ngFor="let usuario of usuarios">
+                <td align="center"> {{ usuario.id }} </td>
+                <td align="center"> {{ usuario.nombre }} </td>
+                <td align="center"> {{ usuario.correo }} </td>
+                <td align="center">
+                    <a [routerLink]="['/administrador/editar-cliente', usuario.id]"
+                    routerLinkActive="router-link-active"  class="btn btn-success">Editar
+                    </a>
+                </td>
+                <td align="center">
+                    <a class="btn btn-success" (click)="onDelete(usuario.id)">Eliminar</a>
+                </td>
+            </tr>
+    </table>
+

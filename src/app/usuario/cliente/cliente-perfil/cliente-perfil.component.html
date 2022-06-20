@@ -1,0 +1,22 @@
+
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+            <h1>Perfil de usuario</h1>
+            <hr>
+            <h2>Mis Compras</h2>
+            <div class="panel panel-default" *ngFor="let venta of ventas">
+                <div class="panel-body">
+                    <ul class="list-group">
+                        <li class="list-group-item" *ngFor="let item of arr">
+                            <span class="badge">${{ item.value.producto.precio }}</span>
+                             {{ item.value.producto.nombre }}  |  Unidades {{ item.value.cantidad }}
+                        </li>
+                    </ul>
+                </div>
+                <div class="panel-footer">
+                    <strong>Precio total: ${{ venta.pago_total }}</strong>
+                </div>
+            </div>
+        </div>
+    </div>
+

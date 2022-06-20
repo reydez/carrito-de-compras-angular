@@ -1,0 +1,20 @@
+<div class="row">
+    <div class="col-md-4 col-md-offset-4">
+        <h1>Registro de cliente</h1>
+        <form (submit)="onRegistrar(registrarForm)" #registrarForm="ngForm">
+            <div class="form-group">
+                <label for="nombre">Nombre</label>
+<input type="text" id="nombre" name="nombre" ngModel #nombreInput="ngModel" required class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="correo">Correo</label>
+<input type="text" id="correo" name="correo" ngModel #emailInput="ngModel" required email class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="password">Contraseña</label>
+<input type="password" id="password" name="password" ngModel #passwordInput="ngModel" required class="form-control">
+            </div>
+<button type="submit" class="btn btn-primary pull-right">Registrar</button>
+        </form>
+    </div>
+</div>

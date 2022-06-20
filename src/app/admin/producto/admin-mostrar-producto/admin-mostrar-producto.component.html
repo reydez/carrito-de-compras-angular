@@ -1,0 +1,32 @@
+<h1>Visualizar Productos</h1>
+<table class="table">
+  <thead>
+    <tr>
+      <th class="text-center">Nombre</th>
+      <th  class="text-center">Imagen</th>
+      <th  class="text-center">Precio</th>
+      <th class="text-center">Cantidad</th>
+      <th  class="text-center">Categoira Id</th>
+      <th  class="text-center">Editar</th>
+      <th  class="text-center">Eliminar</th>
+    </tr>
+  </thead>
+  <tr *ngFor="let producto of productos">
+    <td align="center"> {{ producto.nombre }} </td>
+    <td align="center"><img [src]="producto.imagen" [alt]="producto.nombre"
+    height="70"></td>
+    <td align="center"> ${{ producto.precio }} </td>
+    <td align="center"> {{ producto.cantidad }} </td>
+    <td align="center"> {{ producto.categoria_id }} </td>
+    <td align="center">
+      <a [routerLink]="['/administrador/editar-producto', producto.id]"
+    routerLinkActive="router-link-active" class="btn btn-success">Editar
+      </a>
+    </td>
+    <td align="center">
+      <a class="btn btn-success" (click)="onDelete(producto.id)">Eliminar
+      </a>
+    </td>
+  </tr>
+</table>
+

@@ -1,0 +1,26 @@
+<h1>Visualizar Categorias</h1>
+<table class="table">
+  <thead>
+    <tr>
+      <th class="text-center">Id</th>
+      <th  class="text-center">Nombre</th>
+      <th  class="text-center">Editar</th>
+      <th  class="text-center">Eliminar</th>
+    </tr>
+  </thead>
+    <tr *ngFor="let categoria of categorias">
+      <td align="center"> {{categoria.id}} </td>
+      <td align="center"> {{categoria.nombre}} </td>
+      <td align="center">
+      <a [routerLink]="['/administrador/editar-categoria', categoria.id]"
+       class="btn btn-success">Editar
+      </a>
+      </td>
+      <td align="center">
+      <a class="btn btn-success" (click)="onDelete(categoria.id)">Eliminar
+      </a>
+      </td>
+    </tr>
+</table>
+
+
